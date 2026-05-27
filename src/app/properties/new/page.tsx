@@ -6,7 +6,7 @@ import { ListPropertyForm } from "@/components/forms/list-property-form";
 export const metadata: Metadata = {
   title: "List Property",
   description:
-    "Create a premium residential or commercial property listing on BhilaiProps.",
+    "Create a premium residential or commercial property listing on PropertyDekho.",
 };
 
 export default function NewPropertyPage() {

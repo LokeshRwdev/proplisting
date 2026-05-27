@@ -5,7 +5,7 @@ import { GoogleAuthButton } from "@/components/auth/google-auth-button";
 
 export const metadata: Metadata = {
   title: "Sign Up",
-  description: "Create a BhilaiProps account with Google.",
+  description: "Create a PropertyDekho account with Google.",
 };
 
 export default function SignUpPage() {
@@ -16,7 +16,7 @@ export default function SignUpPage() {
           href="/"
           className="text-sm font-semibold text-zinc-500 transition hover:text-zinc-950"
         >
-          BhilaiProps
+          PropertyDekho
         </Link>
         <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
           Create account
@@ -25,7 +25,7 @@ export default function SignUpPage() {
           Sign up to list and manage properties.
         </h1>
         <p className="mt-4 text-sm leading-6 text-zinc-600">
-          Google sign-up creates your BhilaiProps profile automatically, so you
+          Google sign-up creates your PropertyDekho profile automatically, so you
           can submit listings for admin review.
         </p>
         <div className="mt-8">

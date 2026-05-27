@@ -6,7 +6,7 @@ import { GoogleAuthButton } from "@/components/auth/google-auth-button";
 
 export const metadata: Metadata = {
   title: "Sign In",
-  description: "Sign in to BhilaiProps with Google.",
+  description: "Sign in to PropertyDekho with Google.",
 };
 
 export default function SignInPage() {
@@ -18,7 +18,7 @@ export default function SignInPage() {
       mode="sign-in"
       footer={
         <>
-          New to BhilaiProps?{" "}
+          New to PropertyDekho?{" "}
           <Link href="/sign-up" className="font-semibold text-rose-600">
             Create an account
           </Link>
@@ -48,7 +48,7 @@ function AuthShell({
           href="/"
           className="text-sm font-semibold text-zinc-500 transition hover:text-zinc-950"
         >
-          BhilaiProps
+          PropertyDekho
         </Link>
         <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-rose-600">
           {eyebrow}

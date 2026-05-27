@@ -11,7 +11,7 @@ export async function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/30 bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link href="/" className="text-xl font-bold tracking-tight text-zinc-950">
-          BhilaiProps
+          PropertyDekho
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-medium text-zinc-700 md:flex">
           <Link href="/#listings" className="hover:text-zinc-950">

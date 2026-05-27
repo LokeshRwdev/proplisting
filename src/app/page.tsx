@@ -250,7 +250,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Why choose us"
             title="A faster path from search to site visit"
-            description="BhilaiProps is structured around verified data, responsive owners, and workflows that work for Indian residential and commercial deals."
+            description="PropertyDekho is structured around verified data, responsive owners, and workflows that work for Indian residential and commercial deals."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {[

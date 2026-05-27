@@ -9,7 +9,7 @@ function getProfileName(userMetadata: Record<string, unknown>, email?: string) {
     return fullName.trim();
   }
 
-  return email?.split("@")[0] ?? "BhilaiProps user";
+  return email?.split("@")[0] ?? "PropertyDekho user";
 }
 
 export async function GET(request: Request) {

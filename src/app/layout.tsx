@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bhilaiprops.com"),
+  metadataBase: new URL("https://propertydekho.co"),
   title: {
-    default: "BhilaiProps - Premium Real Estate in Bhilai",
-    template: "%s | BhilaiProps",
+    default: "PropertyDekho - Premium Real Estate in Bhilai",
+    template: "%s | PropertyDekho",
   },
   description:
     "Discover, list, and manage premium residential and commercial properties across Bhilai with verified listings and fast owner connections.",
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     "land in Bhilai",
   ],
   openGraph: {
-    title: "BhilaiProps - Premium Real Estate in Bhilai",
+    title: "PropertyDekho - Premium Real Estate in Bhilai",
     description:
       "Browse verified homes, land, shops, offices, restaurants, and warehouses across Bhilai.",
-    url: "https://bhilaiprops.com",
-    siteName: "BhilaiProps",
+    url: "https://PropertyDekho.com",
+    siteName: "PropertyDekho",
     locale: "en_IN",
     type: "website",
   },

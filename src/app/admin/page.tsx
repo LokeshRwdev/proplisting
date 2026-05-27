@@ -5,7 +5,7 @@ import { AdminListingsPanel } from "@/components/admin/admin-listings-panel";
 
 export const metadata: Metadata = {
   title: "Admin Panel",
-  description: "Moderate and manage BhilaiProps property listings.",
+  description: "Moderate and manage PropertyDekho property listings.",
 };
 
 export default function AdminPage() {
