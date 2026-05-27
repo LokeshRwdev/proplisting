@@ -26,3 +26,27 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@utility input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid #e4e4e7;
+  background: #ffffff;
+  padding: 0.875rem 1rem;
+  color: #18181b;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+@utility input {
+  &:focus {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 4px rgb(225 29 72 / 0.1);
+  }
+
+  &::placeholder {
+    color: #a1a1aa;
+  }
+}

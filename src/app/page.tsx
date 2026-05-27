@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { PropertyCard } from "@/components/property/property-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import {
@@ -34,41 +35,7 @@ const testimonials = [
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/30 bg-white/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
-          <a href="#" className="text-xl font-bold tracking-tight text-zinc-950">
-            BhilaiProps
-          </a>
-          <nav className="hidden items-center gap-8 text-sm font-medium text-zinc-700 md:flex">
-            <a href="#listings" className="hover:text-zinc-950">
-              Buy
-            </a>
-            <a href="#listings" className="hover:text-zinc-950">
-              Rent
-            </a>
-            <a href="#commercial" className="hover:text-zinc-950">
-              Commercial
-            </a>
-            <a href="#categories" className="hover:text-zinc-950">
-              Categories
-            </a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <a
-              href="/login"
-              className="hidden rounded-full px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-100 sm:inline-flex"
-            >
-              Sign in
-            </a>
-            <a
-              href="/properties/new"
-              className="rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-600"
-            >
-              List property
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="relative min-h-[760px] bg-zinc-950 pt-28 text-white">
         <Image
