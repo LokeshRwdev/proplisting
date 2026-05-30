@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { ListPropertyForm } from "@/components/forms/list-property-form";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "List Property",
@@ -9,7 +11,17 @@ export const metadata: Metadata = {
     "Create a premium residential or commercial property listing on PropertyDekho.",
 };
 
-export default function NewPropertyPage() {
+export default async function NewPropertyPage() {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    // Redirect unauthenticated users to sign-in with a next param
+    redirect(`/sign-in?next=${encodeURIComponent("/properties/new")}`);
+  }
+
   return (
     <main className="min-h-screen bg-stone-50 px-5 py-10 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-6xl">
@@ -27,20 +39,6 @@ export default function NewPropertyPage() {
             <h1 className="mt-3 text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">
               List a property with complete buyer-ready details.
             </h1>
-            {/* <p className="mt-5 text-base leading-7 text-zinc-600">
-              Add pricing, specifications, location, amenities, and media. The
-              backend validates the payload and stores the listing as pending
-              for moderation.
-            </p> */}
-            {/* <div className="mt-8 rounded-[28px] border border-zinc-200 bg-white p-6 shadow-sm">
-              <h2 className="font-semibold text-zinc-950">Required backend</h2>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-zinc-600">
-                <li>Supabase Auth session cookie</li>
-                <li>Profile row for the signed-in user</li>
-                <li>RLS policies from `supabase/schema.sql`</li>
-                <li>Supabase env variables in `.env.local`</li>
-              </ul>
-            </div> */}
           </aside>
           <ListPropertyForm />
         </div>

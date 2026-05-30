@@ -2,6 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 
+import Image from "next/image";
 import {
   furnishingStatuses,
   listingTypes,
@@ -238,9 +239,7 @@ export function AdminListingsPanel() {
       <section className="rounded-[28px] border border-zinc-200 bg-white p-5 shadow-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-zinc-950">
-              Listing moderation
-            </h2>
+            <h2 className="text-xl font-semibold text-zinc-950">Listing moderation</h2>
             <p className="mt-1 text-sm text-zinc-500">
               Review, approve, edit, reject, feature, or archive submitted
               listings.

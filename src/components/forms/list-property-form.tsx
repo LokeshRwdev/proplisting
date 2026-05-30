@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, ReactNode, useMemo, useState } from "react";
+import { FormEvent, ReactNode, useMemo, useState, useEffect } from "react";
 
 import {
   amenityOptions,
@@ -164,6 +164,17 @@ export function ListPropertyForm() {
   const mapSrc = mapQuery
     ? `https://www.google.com/maps/embed/v1/place?key=${googleMapsKey}&q=${encodeURIComponent(mapQuery)}`
     : "";
+
+  const imagePreviews = useMemo(() => images.map((file) => URL.createObjectURL(file)), [images]);
+  const videoPreviews = useMemo(() => videos.map((file) => URL.createObjectURL(file)), [videos]);
+
+  useEffect(() => {
+    return () => {
+      // revoke created object URLs when component unmounts or files change
+      imagePreviews.forEach((url) => URL.revokeObjectURL(url));
+      videoPreviews.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [imagePreviews, videoPreviews]);
 
   function setField<K extends keyof FormValues>(field: K, value: FormValues[K]) {
     setValues((current) => ({ ...current, [field]: value }));
@@ -637,6 +648,36 @@ export function ListPropertyForm() {
             error={errors.videos}
           />
         </div>
+        {(images.length > 0 || videos.length > 0) && (
+          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+            <div>
+              {images.length > 0 ? (
+                <div>
+                  <h3 className="mb-2 text-sm font-semibold text-zinc-800">Image previews</h3>
+                  <div className="grid grid-cols-3 gap-2">
+                    {imagePreviews.map((src, i) => (
+                      <div key={i} className="relative h-24 w-full overflow-hidden rounded-lg bg-zinc-100">
+                        <img src={src} alt={`preview-${i}`} className="h-full w-full object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+            <div>
+              {videos.length > 0 ? (
+                <div>
+                  <h3 className="mb-2 text-sm font-semibold text-zinc-800">Video previews</h3>
+                  <div className="grid grid-cols-1 gap-2">
+                    {videoPreviews.map((src, i) => (
+                      <video key={i} src={src} controls className="h-36 w-full rounded-md bg-zinc-100 object-contain" />
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        )}
       </section>
 
       <div className="sticky bottom-4 z-10 rounded-[24px] border border-zinc-200 bg-white/90 p-4 shadow-xl backdrop-blur">

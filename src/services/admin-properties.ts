@@ -13,6 +13,7 @@ export type AdminProperty =
     } | null;
     image_count: number;
     video_count: number;
+    cover_image_url?: string | null;
   };
 
 type PropertyRow = Database["public"]["Tables"]["properties"]["Row"];
@@ -61,25 +62,34 @@ export async function listAdminProperties(
             .in("id", ownerIds)
         : Promise.resolve({ data: [] }),
       propertyIds.length > 0
-        ? supabase.from("property_images").select("property_id").in("property_id", propertyIds)
+        ? supabase
+            .from("property_images")
+            .select("property_id, public_url, storage_path")
+            .in("property_id", propertyIds)
         : Promise.resolve({ data: [] }),
       propertyIds.length > 0
-        ? supabase.from("property_videos").select("property_id").in("property_id", propertyIds)
+        ? supabase
+            .from("property_videos")
+            .select("property_id")
+            .in("property_id", propertyIds)
         : Promise.resolve({ data: [] }),
     ]);
 
   return properties.map<AdminProperty>((property) => {
     const owner = owners?.find((item) => item.id === property.owner_id) ?? null;
-    const imageCount =
-      images?.filter((item) => item.property_id === property.id).length ?? 0;
+    const imageRows = images?.filter((item) => item.property_id === property.id) ?? [];
+    const imageCount = imageRows.length;
     const videoCount =
       videos?.filter((item) => item.property_id === property.id).length ?? 0;
+    const firstImage = imageRows.length > 0 ? (imageRows[0] as any) : null;
+    const coverUrl = firstImage?.public_url ?? null;
 
     return {
       ...property,
       owner,
       image_count: imageCount,
       video_count: videoCount,
+      cover_image_url: coverUrl,
     };
   });
 }

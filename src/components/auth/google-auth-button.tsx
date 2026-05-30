@@ -19,7 +19,13 @@ export function GoogleAuthButton({ mode }: GoogleAuthButtonProps) {
     try {
       const supabase = createSupabaseBrowserClient();
       const origin = window.location.origin;
-      const nextPath = mode === "sign-up" ? "/properties/new" : "/";
+      const params = new URLSearchParams(window.location.search);
+      const urlNext = params.get("next");
+      const nextPath = urlNext && urlNext.startsWith("/") && !urlNext.startsWith("//")
+        ? urlNext
+        : mode === "sign-up"
+          ? "/properties/new"
+          : "/";
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
